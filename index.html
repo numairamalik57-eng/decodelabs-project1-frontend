@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecodeLabs | Responsive Frontend Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <a href="main-content" class="skip-link">Skip to main content</a>
+
+      <header class="site-header">
+        <div class="logo">DecodeLabs</div>
+
+        <botton class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>  
+        </botton>
+
+        <nav class="site-nav" id="siteNav" aria-lable="Main navigation">
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      </header>
+    <main class="main-layout" id="main-content">
+
+        <section class="hero" id="home">
+            <h1>Build the Future, One Line at a Time</h1>
+            <p>A clean, accessible, and fully responsive frontend _ crafted with pure HTML, CSS &AMP; JavaScript.</p>
+            <button class="cta-btn">Explore services</button>
+        </section>
+
+        <aside class="sidebar">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#work">Recent Work</a></li>
+                <li><a href="#contact">Get in Touch</a></li>
+            </ul>
+        </aside>
+        <section class="content-grid" id="services">
+            <h2 class="section-title">What We Do</h2>
+            <div class="grid">
+              <article class="card">
+                <span class="card-icon" aria-hidden="true">💻</span>
+                <h3>Frontend Development</h3>
+                <p>Responsive, semantic, and accessible interfaces built for every screen size.</p>
+              </article> 
+
+              <article class="card">
+                <span class="card-icon" aria-hidden="true">🎨</span>
+                <h3>UI/UX Design</h3>
+                <p>Grounded, 2025-ready aesthetics that balance precision with empathy.</p>
+              </article>
+
+              <article class="card">
+                <span class="card-icon" aria-hidden="true">📊</span>
+                <h3>Performance Audit</h3>
+                <p>LCP, CLS, and accessibility checks to keep your site fast and inclusive.</p>
+              </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <address>
+            Contact us at <a href="mailto:hello@decodelabs.dev">hello@decodelabs.dev</a>
+        </address>
+        <p>&copy; <time datetime="2026">2026</time>DecodeLabs. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

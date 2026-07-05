@@ -1,0 +1,322 @@
+/* ===========================
+   1. ROOT VARIABLES (2025 Palette)
+   =========================== */
+:root {
+  --mocha-mousse: #A85D5F;
+  --ethereal-blue: #A0D4E0;
+  --moonlit-grey: #F2F0EA;
+  --text-dark: #2E2A27;
+  --white: #FFFFFF;
+
+  --bg-color: var(--moonlit-grey);
+  --card-bg: var(--white);
+  --text-color: var(--text-dark);
+
+  --font-heading: 'Montserrat', 'Inter', sans-serif;
+  --font-body: 'Roboto', 'Open Sans', sans-serif;
+}
+
+/* Dark mode overrides (applied via JS toggling this class on <body>) */
+body.dark-mode {
+  --bg-color: #1E1B19;
+  --card-bg: #2A2523;
+  --text-color: #F2F0EA;
+}
+
+/* ===========================
+   2. RESET
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Skip link - hidden until focused (WCAG keyboard accessibility) */
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: var(--mocha-mousse);
+  color: var(--white);
+  padding: 0.6rem 1rem;
+  z-index: 200;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Visible focus states for keyboard navigation (WCAG) */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--mocha-mousse);
+  outline-offset: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+/* Fluid typography using clamp() */
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+p  { font-size: clamp(0.95rem, 1.5vw, 1.1rem); }
+
+/* ===========================
+   3. HEADER + NAV (Flexbox - micro layout)
+   =========================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--mocha-mousse);
+}
+
+/* Mobile nav starts hidden */
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.site-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  padding: 1rem 1.5rem;
+  display: none;
+}
+
+.site-nav.open {
+  display: block;
+}
+
+.site-nav a {
+  font-weight: 600;
+}
+
+/* Active nav link (highlighted on scroll via JS) */
+.nav-link.active {
+  color: var(--mocha-mousse);
+  border-bottom: 2px solid var(--mocha-mousse);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+/* Hamburger button (mobile only) */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-dark);
+  border-radius: 2px;
+}
+
+/* ===========================
+   4. MAIN LAYOUT (CSS Grid - macro layout)
+   Mobile-first: single column
+   =========================== */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--ethereal-blue), var(--moonlit-grey));
+  padding: 2.5rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hero p {
+  margin: 1rem 0;
+}
+
+.cta-btn {
+  background-color: var(--mocha-mousse);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.sidebar {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.sidebar h2 {
+  margin-bottom: 0.8rem;
+  color: var(--mocha-mousse);
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Content grid section */
+.section-title {
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  color: var(--mocha-mousse);
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   5. FOOTER
+   =========================== */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--text-dark);
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+.site-footer address {
+  font-style: normal;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer a {
+  text-decoration: underline;
+}
+
+/* ===========================
+   6. MEDIA QUERIES (Mobile-First Strategy)
+   Tablet: 768px | Desktop: 1024px
+   =========================== */
+
+/* --- Tablet (768px and up) --- */
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    display: block;
+    width: auto;
+    padding: 0;
+    background: none;
+  }
+
+  .site-nav ul {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Desktop (1024px and up) --- */
+@media (min-width: 1024px) {
+  .main-layout {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "hero hero"
+      "content sidebar";
+  }
+
+  .hero {
+    grid-area: hero;
+  }
+
+  .content-grid {
+    grid-area: content;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
